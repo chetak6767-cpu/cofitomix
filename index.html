@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cofitomix — Ertalab uyg‘otadigan qahva</title>
+<meta name="description" content="Cofitomix: yangi qovurilgan donalardan tayyorlangan qahva. Espresso, latte, kapuchino va sovuq qahvalar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1459;
+  --cobalt:#2338F0;
+  --latte:#E8C79B;
+  --foam:#FFF3DF;
+  --roast:#3B2114;
+  --display:"Unbounded","Arial Black",sans-serif;
+  --body:"Onest","Segoe UI",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--cobalt);color:var(--foam);line-height:1.6;font-size:1.05rem}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--latte);outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+
+/* header */
+header{position:sticky;top:0;z-index:5;background:var(--cobalt);border-bottom:2px solid var(--ink)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:.9rem;padding-bottom:.9rem}
+.logo{font-family:var(--display);font-weight:800;text-decoration:none;font-size:1.1rem}
+nav a{margin-left:1.4rem;text-decoration:none;font-weight:500}
+nav a:hover{text-decoration:underline;text-underline-offset:5px}
+
+/* hero */
+.hero{padding:4rem 0 5rem;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem;align-items:center}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,8vw,6rem);line-height:.98;letter-spacing:-.03em}
+.hero p{max-width:30rem;margin:1.5rem 0 2rem;color:var(--latte);font-size:1.2rem}
+.btn{display:inline-block;background:var(--foam);color:var(--ink);font-weight:600;padding:.95rem 1.8rem;border-radius:999px;text-decoration:none;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s;cursor:pointer;font-family:var(--body);font-size:1rem}
+.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+
+/* cup */
+.cup-box{position:relative;display:flex;justify-content:center;padding-top:5rem}
+.cup{position:relative;width:240px;height:200px;background:var(--foam);border:4px solid var(--ink);border-radius:0 0 120px 120px}
+.cup::before{content:"";position:absolute;top:-4px;left:-4px;right:-4px;height:34px;background:var(--roast);border:4px solid var(--ink);border-radius:50%}
+.cup::after{content:"";position:absolute;right:-62px;top:34px;width:70px;height:100px;border:4px solid var(--ink);border-left:none;border-radius:0 60px 60px 0}
+.cup span{position:absolute;inset:auto 0 28px;text-align:center;font-family:var(--display);font-weight:800;color:var(--cobalt);font-size:1.1rem}
+.saucer{position:absolute;bottom:-18px;width:330px;height:22px;background:var(--latte);border:4px solid var(--ink);border-radius:50%;left:50%;transform:translateX(-50%)}
+.steam{position:absolute;top:0;width:12px;height:70px;border-radius:12px;background:var(--foam);opacity:0;animation:steam 3s ease-in-out infinite}
+.steam:nth-child(1){left:38%}
+.steam:nth-child(2){left:50%;animation-delay:.8s}
+.steam:nth-child(3){left:62%;animation-delay:1.6s}
+@keyframes steam{0%{transform:translateY(40px) scaleY(.6);opacity:0}40%{opacity:.85}100%{transform:translateY(-30px) scaleY(1.2);opacity:0}}
+
+/* sections */
+section{padding:5rem 0}
+.light{background:var(--foam);color:var(--roast)}
+.light h2{color:var(--ink)}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-.02em;line-height:1.1;margin-bottom:1rem}
+.lead{max-width:36rem;margin-bottom:2.5rem}
+
+/* menu */
+.menu{list-style:none;border-top:2px solid var(--ink)}
+.menu li{display:grid;grid-template-columns:1fr auto;gap:.2rem 1.5rem;padding:1.3rem 0;border-bottom:2px solid var(--ink)}
+.menu strong{font-family:var(--display);font-weight:500;font-size:1.25rem;color:var(--ink)}
+.menu .price{font-family:var(--display);font-weight:800;color:var(--cobalt);font-size:1.15rem;grid-row:span 2;align-self:center}
+.menu small{font-size:1rem}
+
+/* why */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin-top:2.5rem}
+.why h3{font-family:var(--display);font-weight:500;font-size:1.15rem;margin-bottom:.5rem;color:var(--latte)}
+
+/* order */
+.order{background:var(--ink)}
+.order form{display:grid;gap:1rem;max-width:28rem;margin-top:2rem}
+label{font-weight:600;display:grid;gap:.4rem}
+input,select{font:inherit;padding:.85rem 1rem;border-radius:12px;border:2px solid var(--latte);background:var(--foam);color:var(--roast)}
+#msg{min-height:1.5em;color:var(--latte);font-weight:500}
+
+footer{background:var(--ink);border-top:2px solid var(--cobalt);padding:2rem 0;color:var(--latte)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
+
+@media (max-width:760px){
+  .hero .wrap{grid-template-columns:1fr}
+  .cup-box{padding-top:3rem;margin-right:3.5rem}
+  .why{grid-template-columns:1fr}
+  nav a:not(:last-child){display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.steam{opacity:.6}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#">Cofitomix</a>
+    <nav>
+      <a href="#menu">Menyu</a>
+      <a href="#nega">Nega biz</a>
+      <a href="#buyurtma">Buyurtma</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Ertalab uyg‘otadigan qahva</h1>
+      <p>Yangi qovurilgan donalar, to‘g‘ri harorat va bir piyola xotirjamlik. Cofitomix qahvasini birinchi ho‘plamdan sezasiz.</p>
+      <a class="btn" href="#buyurtma">Qahva buyurtma qilish</a>
+    </div>
+    <div class="cup-box" aria-hidden="true">
+      <div class="steam"></div><div class="steam"></div><div class="steam"></div>
+      <div class="cup"><span>Cofitomix</span></div>
+      <div class="saucer"></div>
+    </div>
+  </div>
+</div>
+
+<section class="light" id="menu">
+  <div class="wrap">
+    <h2>Menyu</h2>
+    <p class="lead">Har bir ichimlik buyurtma berilganda tayyorlanadi. Narxlar so‘mda.</p>
+    <ul class="menu">
+      <li><strong>Espresso</strong><span class="price">15 000</span><small>Kuchli, quyuq, 30 soniyada ichib bo‘ladigan.</small></li>
+      <li><strong>Kapuchino</strong><span class="price">22 000</span><small>Espresso, issiq sut va qalin ko‘pik.</small></li>
+      <li><strong>Latte</strong><span class="price">24 000</span><small>Yumshoq, sutli, kunning har qanday vaqti uchun.</small></li>
+      <li><strong>Aysed qahva</strong><span class="price">26 000</span><small>Muz, sut va espresso. Issiq kunlar uchun.</small></li>
+      <li><strong>Qahva donalari, 250 g</strong><span class="price">85 000</span><small>Uyda o‘zingiz tayyorlash uchun.</small></li>
+    </ul>
+  </div>
+</section>
+
+<section id="nega">
+  <div class="wrap">
+    <h2>Nega Cofitomix</h2>
+    <div class="why">
+      <div><h3>Yangi qovurilgan</h3><p>Donalar har hafta qovuriladi, shuning uchun ta’m va hid saqlanadi.</p></div>
+      <div><h3>Tez tayyorlanadi</h3><p>Buyurtmangiz 5 daqiqada tayyor bo‘ladi. Ish yo‘lida ham ulgurasiz.</p></div>
+      <div><h3>Hamyonbop</h3><p>Sifatli qahva uchun ortiqcha pul to‘lash shart emas.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="order" id="buyurtma">
+  <div class="wrap">
+    <h2>Buyurtma bering</h2>
+    <p>Ismingiz, telefon raqamingiz va ichimlikni yozing. Biz sizga qo‘ng‘iroq qilamiz.</p>
+    <form id="f">
+      <label>Ismingiz
+        <input id="name" required placeholder="Masalan, Jasur">
+      </label>
+      <label>Telefon raqamingiz
+        <input id="phone" type="tel" required placeholder="+998 90 123 45 67">
+      </label>
+      <label>Ichimlik
+        <select id="drink">
+          <option>Espresso</option>
+          <option>Kapuchino</option>
+          <option>Latte</option>
+          <option>Aysed qahva</option>
+          <option>Qahva donalari, 250 g</option>
+        </select>
+      </label>
+      <button class="btn" type="submit">Buyurtmani yuborish</button>
+      <p id="msg" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="y"></span> Cofitomix</span>
+    <span>Telefon: +998 90 000 00 00</span>
+    <span>Toshkent, Oʻzbekiston</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+
+  document.getElementById("f").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    var msg = document.getElementById("msg");
+    var btn = e.target.querySelector("button");
+    var data = {
+      name: document.getElementById("name").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+      drink: document.getElementById("drink").value
+    };
+    btn.disabled = true;
+    msg.textContent = "Yuborilmoqda...";
+    try {
+      var r = await fetch("/.netlify/functions/order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+      if (!r.ok) throw new Error("fail");
+      msg.textContent = "Rahmat, " + data.name + "! Buyurtmangiz qabul qilindi. Tez orada qo‘ng‘iroq qilamiz.";
+      e.target.reset();
+    } catch (err) {
+      msg.textContent = "Yuborilmadi. Iltimos, qayta urinib ko‘ring yoki telefon orqali bog‘laning.";
+    }
+    btn.disabled = false;
+  });
+</script>
+</body>
+</html>
